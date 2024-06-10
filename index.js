@@ -1,1 +1,5 @@
-console.log("Hello world");
+const app = require("./app");
+
+app.listen("http://localhost:3000", () => {
+  console.log("Server running on port 3000");
+});
