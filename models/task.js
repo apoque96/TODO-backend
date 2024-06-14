@@ -16,8 +16,11 @@ const taskSchema = mongoose.Schema({
     type: String,
     default: IMPORTANCE.NONE,
   },
-  due_date: String,
-  desciption: String,
+  due_date: {
+    type: Date,
+    default: Date.now(),
+  },
+  description: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -36,6 +39,6 @@ taskSchema.set("toJSON", {
   },
 });
 
-const Task = mongoose.model(taskSchema);
+const Task = mongoose.model("Task", taskSchema);
 
 module.exports = Task;
