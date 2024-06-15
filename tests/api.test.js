@@ -141,7 +141,7 @@ describe("Creates users, projects and tasks", async () => {
   });
 });
 
-describe.only("Functionality", async () => {
+describe("Functionality", async () => {
   beforeEach(async () => {
     await api.post("/api/testing/reset");
 
@@ -373,7 +373,7 @@ describe.only("Functionality", async () => {
       .expect(401);
   });
 
-  test.only("A task can be moved to another project", async () => {
+  test("A task can be moved to another project", async () => {
     let previousProject = await Project.findOne({ title: "Learning" });
     let task = await Task.findOne({ title: "Learn MySql" });
     await api
