@@ -51,7 +51,7 @@ tasksRouter.post("/", async (req, res) => {
 
   const result = await task.save();
   user.tasks = user.tasks.concat(result._id);
-  user.save();
+  await user.save();
   res.status(201).json(result);
 });
 

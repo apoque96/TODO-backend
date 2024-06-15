@@ -85,6 +85,16 @@ projectsRouter.patch("/task/:id/:taskId", async (req, res) => {
     return;
   }
 
+  if (task.project) {
+    //Removes task from previous project
+    const previousProject = await Project.findById(task.project.toString());
+    const index = previousProject.tasks.indexOf(req.params.taskId);
+
+    if (index > -1) {
+      previousProject.tasks.splice(index, 1);
+      previousProject.save();
+    }
+  }
   project.tasks = project.tasks.concat(req.params.taskId);
   task.project = req.params.id;
 
